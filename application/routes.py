@@ -1,17 +1,23 @@
 from flask import render_template, url_for, flash, redirect
 from application import app, db, bcrypt
-from application.form import RegistrationForm, LoginForm
-from application.models import User
-from flask_login import login_user, current_user, logout_user
+from application.form import RegistrationForm, LoginForm, NewTeamForm
+from application.models import User, Team
+from flask_login import login_user, current_user, logout_user ,login_required
+
+
+
+
 
 
 @app.route('/')
 def home():
-    return render_template("home.html", title="Home", )
+    teams= Team.query.all()
+    return render_template("home.html", title="Home", teams=teams )
 
 @app.route('/about')
 def about():
     return render_template("about.html", title="about", )
+
 
 @app.route('/register', methods= ['GET','POST'])
 def register():
@@ -23,8 +29,8 @@ def register():
         user = User (username= form.username.data, email=form.email.data, password= hashed_pwd)
         db.session.add(user)
         db.session.commit()
-        flash(f'Account created for {form.username.data}!', 'success')
-        return redirect(url_for('home'))
+        flash(f'Account Created!', 'success')
+        return redirect(url_for('login'))
     return render_template("register.html", title="Register",form=form )
 
 @app.route('/login', methods= ['GET','POST'])
@@ -46,3 +52,19 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+@app.route('/team/new', methods= ['GET', 'POST'])
+@login_required
+def new_team():
+    form = NewTeamForm()
+    if form.validate_on_submit():
+        team = Team(team_name = form.team_name.data, owner= current_user)
+        db.session.add(team)
+        db.session.commit()
+        flash(" You're team has been created", 'success' )
+        return redirect(url_for('home'))
+    return render_template("create_team.html", title="New Team", form = form)
+
+
+
+
