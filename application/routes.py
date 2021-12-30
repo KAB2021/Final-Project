@@ -51,6 +51,7 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash ('Logged out', 'success')
     return redirect(url_for('home'))
 
 @app.route('/team/new', methods= ['GET', 'POST'])
@@ -61,7 +62,7 @@ def new_team():
         team = Team(team_name = form.team_name.data, owner= current_user)
         db.session.add(team)
         db.session.commit()
-        flash(" You're team has been created", 'success' )
+        flash(" Your team has been created", 'success' )
         return redirect(url_for('home'))
     return render_template("create_team.html", title="New Team", form = form)
 
