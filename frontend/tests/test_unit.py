@@ -51,6 +51,11 @@ class TestViews(TestBase):
     def test_register_get(self):
         response = self.client.get(url_for("register"))
         self.assert200(response)
+    
+    def test_create_team_get(self):
+        app.config['LOGIN_DISABLED'] = True
+        response = self.client.get(url_for("new_team"))
+        self.assert200(response)
 
 class TestViews1(TestBase):
     def test_logout_get(self):
@@ -61,22 +66,21 @@ class TestViews1(TestBase):
 
 
 class TestRead(TestBase):
-    def test_read_tasks(self):
+    def test_read_home_tasks(self):
         response = self.client.get(url_for("home"))
-        self.assertIn("home", str(response.data))
+        self.assertIn(b"admin", response.data)
 
-    def test_read_tasks(self):
+    def test_read_(self):
         response = self.client.get(url_for("about"))
-        self.assertIn("about", str(response.data))
+        self.assertIn(b"about", response.data)
 
 
-# class TestCreate2(TestBase):
-#     def test_login_user(self):
-#         response = self.client.post(
-#             url_for("login"),
-#             json={"username": "admin", "password": "password"},
-#             follow_redirects=True)
-#         self.assertEqual(response.status_code, 302)
+class TestViews2(TestBase):
+    def test_login_user(self):
+        app.config['LOGIN_DISABLED'] = True
+        response = self.client.get(url_for("login"))
+        follow_redirects = True
+        self.assert200(response)
 
 
 class TestCreate(TestBase):
@@ -89,6 +93,8 @@ class TestCreate(TestBase):
             follow_redirects=True)
         new_user = User.query.get(2)
         self.assertEqual("admin1", new_user.username)    
+    
+
     
 class TestCreate1(TestBase):
     
@@ -103,4 +109,10 @@ class TestCreate1(TestBase):
         new_team = Team.query.get(2)
         self.assertEqual("blue", new_team.team_name)
 
-
+class TestCreate3(TestBase):
+    def test_create_user(self):
+        response = self.client.post(
+            url_for("register"),
+            json={"username": "admin", "email": "admin@admin.com",
+                  "password": "password","confirm_password": "password" },
+            follow_redirects=True)
