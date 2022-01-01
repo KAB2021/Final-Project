@@ -1,8 +1,0 @@
-{% extends "layout.html" %}
-{% block content %}
-    <h1> HOME PAGE </h1>
-    {% for team in teams %}
-        <h1>{{ team.owner.username }}</h1>
-        <h2>{{ team.team_name }}</h2>
-    {% endfor %}
-{% endblock content %}

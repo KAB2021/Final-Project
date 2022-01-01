@@ -2,3 +2,4 @@ venv
 enviroment
 tests
 __pycashe__
+.coverage
