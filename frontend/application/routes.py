@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect
 from application import app, db, bcrypt
 from application.form import RegistrationForm, LoginForm, NewTeamForm
-from application.models import User, Team
+from application.models import User, Team, Player
 from flask_login import login_user, current_user, logout_user ,login_required
 
 
@@ -54,7 +54,7 @@ def logout():
     flash ('Logged out', 'success')
     return redirect(url_for('home'))
 
-@app.route('/team/new', methods= ['GET', 'POST'])
+@app.route('/team', methods= ['GET', 'POST'])
 @login_required
 def new_team():
     form = NewTeamForm()
@@ -65,7 +65,5 @@ def new_team():
         flash(" Your team has been created", 'success' )
         return redirect(url_for('home'))
     return render_template("create_team.html", title="New Team", form = form)
-
-
 
 
