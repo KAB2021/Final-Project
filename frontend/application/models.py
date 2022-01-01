@@ -23,9 +23,16 @@ class Team(db.Model):
     team_name = db.Column(db.String(20), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+
     def __repr__(self):
         return f"Team('{self.team_name}')"
 
+class Player(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    player = db.Column(db.String(20), nullable=False, unique=True)
+
+    def __repr__(self):
+        return f"Player ('{self.player}')"
 
 
 
