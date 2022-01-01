@@ -1,0 +1,10 @@
+flask
+flask_sqlalchemy
+flask_wtf
+flask_testing
+pytest
+pytest-cov
+flask_bcrypt
+flask_login
+email_validator
+pymysql
