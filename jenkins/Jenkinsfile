@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_HUB_CREDS = credentails("DOCKER_HUB_CREDS")
+        
+    }
     stages {
         stage('Setup') {
             steps {
