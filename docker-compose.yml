@@ -9,7 +9,7 @@ services:
       target: 5000
     environment:
       DATABASE_URI: 
-      CREATE_SCHEMA:
+      CREATE_SCHEMA: false
     depends_on:
     - database
   database:
