@@ -8,8 +8,8 @@ services:
     - published: 80
       target: 5000
     environment:
-      DATABASE_URI: 
-      CREATE_SCHEMA: "false"
+      DATABASE_URI: mysql+pymysql://root:${MYSQL_ROOT_PASSWORD}@bootcamp_database:3306/project
+      CREATE_SCHEMA: 
     depends_on:
     - database
   database:
@@ -25,4 +25,4 @@ services:
 volumes:
   bootcamp_database_volume:
 
-# mysql+pymysql://root:${MYSQL_ROOT_PASSWORD}@bootcamp_database:3306/project
+# 
