@@ -3,8 +3,8 @@
     <h1> HOME PAGE </h1>
     <div class="content-section">
         <h1>Teams</h1>
-        {% for team in teams %}
-            <p>{{ team.owner.username }} - {{ team.team_name }}</p>
+        {% for team in all_teams %}
+            <p>{{ team["username"] }} - {{ team["team_name"] }}</p>
         {% endfor %}
     </div>
 {% endblock content %}

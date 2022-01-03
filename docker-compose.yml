@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: bootcamp-project-frontend
+    image: kab2021/bootcamp-project-frontend:latest
+    build: ./frontend
+    ports:
+    - published: 80
+      target: 5000
+    # depends_on:
+    # - bootcamp-database-backend
+  backend:
+    container_name: bootcamp-database-backend
+    build: ./backend
+    image: kab2021/bootcamp-project-backend:latest
+    environment:
+      DATABASE_URI: 
+      CREATE_SCHEMA:
+    
+    
+    
+    
+    # environment:
+    #   MYSQL_ROOT_PASSWORD:
+    #   MYSQL_DATABASE: project
+   
+    # volumes:
+    # - type: volume
+    #   source: bootcamp-database-backend-volume
+    #   target: /var/lib/mysql
+# volumes:
+#   bootcamp-database-backend-volume:
+
+
+ # mysql+pymysql://root:${MYSQL_ROOT_PASSWORD}@bootcamp-database-backend:3306/project
