@@ -2,4 +2,4 @@
 
 echo "deploy stage"
 
-ssh jenkins@khalid-jenkins docker stack deploy --compose-file docker-compose.yaml bootcamp-project
+ssh jenkins@swarm-manager docker stack deploy --compose-file docker-compose.yaml bootcamp-project
