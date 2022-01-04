@@ -11,12 +11,12 @@ services:
       DATABASE_URI: mysql+pymysql://root:khalid@bootcamp_database:3306/project
       CREATE_SCHEMA: 
     depends_on:
-    - bootcamp_database
-  bootcamp_database:
+    - database
+  database:
     container_name: bootcamp_database
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_ROOT_PASSWORD: khalid
       MYSQL_DATABASE: project
     ports:
     - published: 3306
