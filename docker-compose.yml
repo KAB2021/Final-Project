@@ -18,6 +18,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE: project
+    ports:
+    - published: 3360
+      target: 3360
     volumes:
     - type: volume
       source: bootcamp_database_volume
