@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/khalid/bootcamp-project/bootcamp-project/venv"
+VIRTUAL_ENV="/home/khalid/bootcamp-project/frontend/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

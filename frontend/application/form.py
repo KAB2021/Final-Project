@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application.models import User, Team
+from application.models import User, Team, Player
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
@@ -37,8 +37,6 @@ class NewTeamForm(FlaskForm):
         team = Team.query.filter_by(team_name=team_name.data).first()
         if team:
             raise ValidationError('Team Name already taken.')
-
-
 
 
 
