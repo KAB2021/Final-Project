@@ -12,6 +12,7 @@ services:
       CREATE_SCHEMA: 
     depends_on:
     - database
+      CREATE_SCHEMA:
   database:
     container_name: bootcamp_database
     image: mysql:5.7
@@ -25,4 +26,3 @@ services:
 volumes:
   bootcamp_database_volume:
 
-# 

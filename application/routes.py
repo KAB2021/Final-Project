@@ -4,11 +4,6 @@ from application.form import RegistrationForm, LoginForm, NewTeamForm
 from application.models import User, Team, Player
 from flask_login import login_user, current_user, logout_user ,login_required
 
-
-
-
-
-
 @app.route('/')
 def home():
     teams= Team.query.all()
