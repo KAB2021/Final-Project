@@ -13,14 +13,14 @@ services:
     depends_on:
     - database
   database:
-    container_name: database
+    container_name: bootcamp_database
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE: project
     volumes:
     - type: volume
-      source: database_volume
+      source: bootcamp_database_volume
       target: /var/lib/mysql
 volumes:
   bootcamp_database_volume:
