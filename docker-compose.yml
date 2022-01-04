@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  bootcamp-project:
+  bootcamp_project:
     container_name: bootcamp_project
     image: ${DOCKER_HUB_CREDS_USR}/bootcamp_project:latest
     build: .
@@ -19,7 +19,7 @@ services:
       MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE: project
     ports:
-    - published:
+    - published: 5000
       target: 3360
     volumes:
     - type: volume
