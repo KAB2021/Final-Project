@@ -8,7 +8,7 @@ services:
     - published: 80
       target: 5000
     environment:
-      DATABASE_URI: mysql+pymysql://root:${MYSQL_ROOT_PASSWORD}@bootcamp_database:3306/project
+      DATABASE_URI: 
       CREATE_SCHEMA: 
     depends_on:
     - database
@@ -18,14 +18,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE: project
-    ports:
-    - published: 5000
-      target: 3360
-    volumes:
-    - type: volume
-      source: bootcamp_database_volume
-      target: /var/lib/mysql
-volumes:
-  bootcamp_database_volume:
+#     volumes:
+#     - type: volume
+#       source: bootcamp_database_volume
+#       target: /var/lib/mysql
+# volumes:
+#   bootcamp_database_volume:
 
-# 
+# mysql+pymysql://root:${MYSQL_ROOT_PASSWORD}@bootcamp_database:3306/project
