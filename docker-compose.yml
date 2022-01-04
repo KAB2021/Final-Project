@@ -9,14 +9,14 @@ services:
       target: 5000
     environment:
       DATABASE_URI: mysql+pymysql://root:${MYSQL_ROOT_PASSWORD}@bootcamp_database:3306/project
-      CREATE_SCHEMA: "false"
+      CREATE_SCHEMA: 
     depends_on:
     - database
   database:
     container_name: bootcamp_database
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: khalid
+      MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE: project
     volumes:
     - type: volume
