@@ -21,9 +21,9 @@ services:
     ports:
     - published: 3306
       target: 3306
-#     volumes:
-#     - type: volume
-#       source: bootcamp_database_volume
-#       target: /var/lib/mysql
-# volumes:
-#   bootcamp_database_volume:
+    volumes:
+    - type: volume
+      source: bootcamp_database_volume
+      target: /var/lib/mysql
+volumes:
+  bootcamp_database_volume:
