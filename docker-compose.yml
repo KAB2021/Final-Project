@@ -10,18 +10,16 @@ services:
     environment:
       DATABASE_URI: mysql+pymysql://root:${MYSQL_ROOT_PASSWORD}@bootcamp_database:3306/project
       CREATE_SCHEMA:
-    depends_on:
-    - database
   database:
     container_name: bootcamp_database
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE: project
-    volumes:
-    - type: volume
-      source: bootcamp_database_volume
-      target: /var/lib/mysql
-volumes:
-  bootcamp_database_volume:
+#     volumes:
+#     - type: volume
+#       source: bootcamp_database_volume
+#       target: /var/lib/mysql
+# volumes:
+#   bootcamp_database_volume:
 
