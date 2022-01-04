@@ -14,7 +14,7 @@ services:
     - database
   database:
     container_name: bootcamp_database
-    image: ${DOCKER_HUB_CREDS_USR}/bootcamp_database:latest
+    image: ${DOCKER_HUB_CREDS_USR}/mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: khalid
       MYSQL_DATABASE: project
