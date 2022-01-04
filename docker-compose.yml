@@ -19,7 +19,7 @@ services:
       MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE: project
     ports:
-    - published: 3360
+    - published:
       target: 3360
     volumes:
     - type: volume
